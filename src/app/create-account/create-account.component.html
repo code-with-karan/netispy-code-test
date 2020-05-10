@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Create Account</title>
+</head>
+
+<body>
+  <div class="container" style="margin-top: 5%;">
+    <div class="row">
+      <div class="col-md-12  col-lg-4"></div>
+      <div class="col-md-12  col-lg-4">
+        <h3 align="center">Welcome</h3>
+        <h5 align="center" class="mt-3">Create your huma medopad account</h5>
+        <i class="fa fa-chevron-left" aria-hidden="true"></i>
+        <h5 align="center"> Back to log in</h5>
+        <form [formGroup]="registrationForm">
+          <app-custom-text [inputClass]="inputClass" inputPlaceholder="Enter your firstName"
+            formControlName="firstName"></app-custom-text>
+          <label
+            *ngIf="registrationForm.controls['firstName'].invalid && (registrationForm.controls['firstName'].dirty || submitted)"
+            class="text-danger">
+            FirstName is required
+          </label><br>
+          <app-custom-text [inputClass]="inputClass" inputPlaceholder="Enter your surname" formControlName="surname">
+          </app-custom-text>
+          <label
+            *ngIf="registrationForm.controls['surname'].invalid && (registrationForm.controls['surname'].dirty || submitted)"
+            class="text-danger">
+            Surname is required
+          </label><br>
+          <app-custom-text [inputClass]="inputClass" inputPlaceholder="Enter your email" formControlName="email">
+          </app-custom-text>
+          <label
+            *ngIf="registrationForm.controls['email'].invalid && (registrationForm.controls['email'].dirty || submitted)"
+            class="text-danger">
+            Email Address is required.
+          </label><br>
+          <app-custom-text [inputClass]="inputClass" inputPlaceholder="Enter your password" formControlName="passWord">
+          </app-custom-text>
+          <label
+            *ngIf="registrationForm.controls['passWord'].invalid && (registrationForm.controls['passWord'].dirty || submitted)"
+            class="text-danger">
+            Password is required
+          </label><br>
+          <app-custom-text [inputClass]="inputClass" inputPlaceholder="Enter your confirmPassword"
+            formControlName="confirmPassword"></app-custom-text>
+          <label
+            *ngIf="(registrationForm.controls['confirmPassword'].dirty || submitted) && registrationForm.errors?.mismatch"
+            class="text-danger">
+            Password and confirm password does not match.
+          </label>
+          <label
+            *ngIf="registrationForm.controls['confirmPassword'].invalid && (registrationForm.controls['confirmPassword'].dirty || submitted) && registrationForm.controls['confirmPassword'].errors.required"
+            class="text-danger">
+            Confirm Password is required.
+          </label><br>
+
+          <app-custom-text [inputClass]="inputClass" inputPlaceholder="Enter your phoneNumber"
+            formControlName="phoneNumber"></app-custom-text>
+          <label
+            *ngIf="registrationForm.controls['phoneNumber'].invalid && (registrationForm.controls['phoneNumber'].dirty || submitted)"
+            class="text-danger">
+            PhoneNumber is required
+          </label><br>
+          <app-custom-checkbox formControlName="acceptance"></app-custom-checkbox>
+          <a href="/create-account" style="color: blue;"> I have read & accept Medopad's End User License Aggrement and
+            Privacy Policy</a><br /><br />
+          <app-custom-button [myButton]="createButtonClass" [myBlock]="createButtonBlock" description="Create Account"
+            (click)="onSubmit()">
+          </app-custom-button>
+        </form>
+      </div>
+      <div class="col-md-12 col-lg-4"></div>
+    </div>
+  </div>
+</body>
+
+</html>

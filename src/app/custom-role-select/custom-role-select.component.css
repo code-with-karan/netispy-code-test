@@ -1,0 +1,13 @@
+.bottumborderdropdown {
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid black;
+  width: 100%;
+}
+
+.radiusborderdropdown {
+  background: transparent;
+  border-radius: 5px;
+  width: 100%;
+}

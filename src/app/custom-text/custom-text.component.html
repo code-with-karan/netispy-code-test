@@ -1,0 +1,4 @@
+<div>
+    <input type="text" [disabled]="disabled" placeholder={{inputPlaceholder}} (input)="onChange($event.target.value)"
+        (blur)="onTouched" [(ngModel)]="inputModel" [value]="value" [ngClass]="inputClass" id="inputId" />
+</div>

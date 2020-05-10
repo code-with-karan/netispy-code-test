@@ -1,0 +1,127 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+
+.txt{
+	width: 100%;
+}
+
+/* Index */
+body {
+	font-family: "Lato", sans-serif;
+  }
+  
+  .sidenav {
+	height: 100%;
+	width: 40px;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: white;
+	overflow-x: hidden;
+	padding-top: 20px;
+  }
+  
+  .sidenav {
+	padding:55px 0 0 0;
+	text-decoration: none;
+	font-size: 15px;
+	color:black;
+	display: block;
+  }
+  
+  .sidenav a:hover {
+	color: #f1f1f1;
+  }
+  
+  .main {
+	margin-left: 20px; /* Same as the width of the sidenav */
+	
+  }
+  .main2{
+	margin-left: 40px; /* Same as the width of the sidenav */
+	 /* Increased text to enable scrolling */
+	padding: 0px 10px;
+	background: white !important;
+  }
+  
+  
+  @media screen and (max-height: 450px) {
+	.sidenav {padding-top: 15px;}
+	.sidenav a {font-size: 18px;}
+  }
+  .log{
+	  padding-left: 11px;
+	  }
+  .menu{
+	  margin-left: 10px !important; 
+	  border-radius: 10px
+  }
+  .first{
+	  margin-left:20px;
+  }
+  .vl {
+	border-left: 1px solid black;
+	height: 690px;
+	margin-left: 40px;
+	margin-top: -16px;
+  }
+  .ownbut:hover { 
+	background-color: #5d3ef4 !important;
+	color:white;
+  }
+  .vl-2 {
+	border-left: 0.1px solid black;
+	height: 140px;
+	margin-top: 0px;
+  }
+  .mycon1{
+	margin-top:20px !important;
+  }
+  .mymenu{
+	  border: 0;
+	outline: 0;
+	background: transparent;
+	border-bottom: 1px solid black;
+	width: 80%;
+  }
+  .mymenu2{
+	padding-left:30px; 
+  }
+  .cls1{
+  border:1px gray solid;
+  border-radius: 5px;
+  padding: 10px;
+  margin:0px;
+  }
+  .cls2{
+	border:1px gray solid;
+	border-radius: 5px;
+	padding: 25px;
+	margin-left:30px;
+  }
+  .comments{
+	background: transparent;
+	width: 100%;
+  }
+  .data{
+	  border: 0;
+	outline: 0;
+	background: transparent;
+	border-bottom: 1px solid black;
+	width: 40%;
+  }
+  .cls4{
+	border: 1px solid black;
+	padding: 5px;
+	margin-top: 15px;
+	border-radius: 5px;
+  }
+  .data2{
+	  border: 0;
+	outline: 0;
+	background: transparent;
+	border-bottom: 1px solid black;
+	width: 80%;
+  }

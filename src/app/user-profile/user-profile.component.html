@@ -1,0 +1,153 @@
+<div class="vl">
+  <div class="main">
+    <div class="container-fluid ">
+      <div class="row">
+        <div class="col-md-3 mycon1 col-xs-12">
+          <h3 align="left">{{userName}}(F,36)
+          </h3>
+          <b>Set Priority
+          </b>
+          <app-custom-button description="High" [myButton]="primaryHigh" [myShape]="buttonOvalSmall" buttonId="high">
+          </app-custom-button>
+          <app-custom-button description="Low" [myButton]="primaryLow" [myShape]="buttonOvalSmall" buttonId="low">
+          </app-custom-button>
+        </div>
+        <div class="col-md-2 mycon1 menu">
+          <select style="padding:3px;">
+            <option>Continue monitoring</option>
+          </select>
+        </div>
+        <div class="vl-2"></div>
+        <div class="col-md-2 col-xs-12 mycon1">
+          <h6>consultant:{{consultant}}
+          </h6>
+          <h6>DOB:{{dob}}
+          </h6>
+          <h6>NHS:#{{nhs}}
+          </h6>
+          <h6>Drug Hx:{{drug}}
+          </h6>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2 mycon1" style="text-align: right;">
+          <app-custom-button description="call" [myButton]="buttonPrimary" [myShape]="buttonOval" buttonId="call">
+          </app-custom-button>
+          <app-custom-button description="Note" [myButton]="buttonPrimary" [myShape]="buttonOval" buttonId="note">
+          </app-custom-button>
+          <br />
+          <br />
+          <h6>Last contact({{lastContactedDate}})</h6>
+          <h6>{{lastContactedDr}}</h6>
+        </div>
+      </div>
+    </div>
+    <hr style="margin-top: 0px; height: 10px !important;">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3 cls1">
+          <form [formGroup]="general">
+            <table height=200px width="350px">
+              <tr>
+                <th>General</th>
+                <th style="text-align: center;" *ngIf="disableGeneral">
+                  <app-custom-button description="Edit" (click)="editGeneral()" buttonId="edit-general">
+                  </app-custom-button>
+                </th>
+                <th *ngIf="!disableGeneral">
+                  <app-custom-button description='YES' [myButton]="buttonPrimary" [myShape]="buttonShape"
+                    buttonId="right-general" (click)="editGeneralData()">
+                  </app-custom-button>
+                  <app-custom-button description="X" [myButton]="buttonDanger" [myShape]="buttonShape"
+                    buttonId="right-general" (click)="onDisabled()">
+                  </app-custom-button>
+                </th>
+              </tr>
+              <tr>
+                <td>Gender:</td>
+                <td class="mymenu2">
+                  <app-custom-select [disabled]="disableGeneral" [myDropDown]="bottomDropDown" [(modelValue)]="gendar"
+                    formControlName="gendar">
+                  </app-custom-select>
+                </td>
+              </tr>
+              <tr>
+                <td>Date Of Birth:</td>
+                <td class="mymenu2">
+                  <app-custom-datepciker [disabled]="disableGeneral" [(modelValue)]="birthDate"
+                    formControlName="dateOfBirth"></app-custom-datepciker>
+                </td>
+              </tr>
+              <tr>
+                <td>Number:</td>
+                <td class="mymenu2">
+                  <app-custom-text [disabled]="disableGeneral" [(inputModel)]="mobileNumber" formControlName="number">
+                  </app-custom-text>
+                </td>
+              </tr>
+              <tr>
+                <td>Address:</td>
+                <td class="mymenu2">
+                  <app-custom-textarea [disabled]="disableGeneral" [(inputModel)]="address" formControlName="address">
+                  </app-custom-textarea>
+                </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+        <div class="col-md-4 cls2">
+          <table height=200px width="350px">
+            <th>Assignd Clinics</th>
+            <th style="text-align: center;" *ngIf="disableClinicians">
+              <app-custom-button description="Edit" (click)="editClinicians()" buttonId="edit-clinicians">
+              </app-custom-button>
+            </th>
+            <th *ngIf="!disableClinicians">
+              <app-custom-button description='YES' [myButton]="buttonPrimary" [myShape]="buttonShape"
+                buttonId="right-clinicians" (click)="editCliniciansData()">
+              </app-custom-button>
+              <app-custom-button description="X" [myButton]="buttonDanger" [myShape]="buttonShape"
+                buttonId="cross-clinicians" (click)="onDisabledClinicians()">
+              </app-custom-button>
+            </th>
+            <tr *ngFor="let clincicians of clinicians">
+              <td>{{clincicians.name}}:</td>
+              <td class="mymenu2">
+                <app-custom-role-select [disabled]="disableClinicians" [myDropDown]="bottomDropDown"
+                  [(modelValue)]="clincicians.role">
+                </app-custom-role-select>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-md-4 cls2"> <b>Reason of monitoring:</b>
+          <br />
+          <textarea rows="1" placeholder="Add comments" class="comments"></textarea>
+          <br />
+          <br /> <b>Pationt Enrollment Date</b>:
+          <input type="date" class="data" placeholder="Add date">
+          <br />
+          <br /> <b>Pationt Health proxies</b>:
+          <input type="text" class="data " placeholder="Add Contact">
+          <br />
+          <br /> <b>Specially assignd to patient:</b>
+          <input type="text" class="data " placeholder="Add Speciliest">
+          <br />
+        </div>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-3 cls4 ">
+              <table height=100px width="350px">
+                <th>Surgery</th>
+                <tr>
+                  <td>Gender:</td>
+                  <td class="mymenu2 ">
+                    <input class="data2" type="date" placeholder="Surgery Date">
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

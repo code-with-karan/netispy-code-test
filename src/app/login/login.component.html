@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>login</title>
+</head>
+
+<body>
+  <div class="container" style="margin-top: 15%;">
+    <div class="row">
+      <div class="col-md-12  col-lg-4"></div>
+      <div class="col-md-12  col-lg-4">
+        <h3 align="center">Welcome</h3>
+        <h5 align="center" class="mt-3">Login to your huma medopad account</h5>
+        <form [formGroup]="loginform">
+          <app-custom-text [inputClass]="inputClass" inputPlaceholder="Enter Your email address"
+            formControlName="emailAddress"></app-custom-text>
+          <label
+            *ngIf="loginform.controls['emailAddress'].invalid && (loginform.controls['emailAddress'].dirty || submitted) && loginform.controls['emailAddress'].hasError('required')"
+            class="text-danger">
+            Email Address is required.
+          </label>
+          <label
+            *ngIf="loginform.controls['emailAddress'].invalid && (submitted || loginform.controls['emailAddress'].dirty || loginform.controls['emailAddress'].touched) && loginform.controls['emailAddress'].errors.pattern"
+            class="text-danger">
+            Please enter valid Email Address.
+          </label>
+          <br><br>
+          <a href="/create-account" style="color: blue;">Don't have medopad account? Create One</a><br /><br />
+          <app-custom-button [myButton]="loginButtonClass" [myBlock]="loginButtonBlock" description="Next"
+            (click)="onSubmit()">
+          </app-custom-button>
+        </form>
+      </div>
+      <div class="col-md-12 col-lg-4"></div>
+    </div>
+  </div>
+</body>
+
+</html>
