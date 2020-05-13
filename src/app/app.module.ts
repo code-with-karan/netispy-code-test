@@ -18,7 +18,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { CustomSelectComponent } from './custom-select/custom-select.component';
 import { CustomTextareaComponent } from './custom-textarea/custom-textarea.component';
 import { CustomDatepcikerComponent } from './custom-datepciker/custom-datepciker.component';
-import { CustomRoleSelectComponent } from './custom-role-select/custom-role-select.component';
 
 @NgModule({
   declarations: [
@@ -33,8 +32,7 @@ import { CustomRoleSelectComponent } from './custom-role-select/custom-role-sele
     UserProfileComponent,
     CustomSelectComponent,
     CustomTextareaComponent,
-    CustomDatepcikerComponent,
-    CustomRoleSelectComponent
+    CustomDatepcikerComponent
   ],
   imports: [
     BrowserModule,

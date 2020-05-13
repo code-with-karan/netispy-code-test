@@ -3,7 +3,7 @@
     <div class="container-fluid ">
       <div class="row">
         <div class="col-md-3 mycon1 col-xs-12">
-          <h3 align="left">{{userName}}(F,36)
+          <h3 align="left">{{data?.name}}(F,36)
           </h3>
           <b>Set Priority
           </b>
@@ -19,13 +19,13 @@
         </div>
         <div class="vl-2"></div>
         <div class="col-md-2 col-xs-12 mycon1">
-          <h6>consultant:{{consultant}}
+          <h6>consultant:{{data?.consultant}}
           </h6>
-          <h6>DOB:{{dob}}
+          <h6>DOB:{{data?.dob}}
           </h6>
-          <h6>NHS:#{{nhs}}
+          <h6>NHS:#{{data?.nhs}}
           </h6>
-          <h6>Drug Hx:{{drug}}
+          <h6>Drug Hx:{{data?.drug}}
           </h6>
         </div>
         <div class="col-md-2"></div>
@@ -36,8 +36,8 @@
           </app-custom-button>
           <br />
           <br />
-          <h6>Last contact({{lastContactedDate}})</h6>
-          <h6>{{lastContactedDr}}</h6>
+          <h6>Last contact({{data?.lastcontact}})</h6>
+          <h6>{{data?.lastdr}}</h6>
         </div>
       </div>
     </div>
@@ -65,7 +65,7 @@
               <tr>
                 <td>Gender:</td>
                 <td class="mymenu2">
-                  <app-custom-select [disabled]="disableGeneral" [myDropDown]="bottomDropDown" [(modelValue)]="gendar"
+                  <app-custom-select [disabled]="disableGeneral" [list]="gendarList" [myDropDown]="bottomDropDown"
                     formControlName="gendar">
                   </app-custom-select>
                 </td>
@@ -73,21 +73,21 @@
               <tr>
                 <td>Date Of Birth:</td>
                 <td class="mymenu2">
-                  <app-custom-datepciker [disabled]="disableGeneral" [(modelValue)]="birthDate"
-                    formControlName="dateOfBirth"></app-custom-datepciker>
+                  <app-custom-datepciker [disabled]="disableGeneral" formControlName="dateOfBirth">
+                  </app-custom-datepciker>
                 </td>
               </tr>
               <tr>
                 <td>Number:</td>
                 <td class="mymenu2">
-                  <app-custom-text [disabled]="disableGeneral" [(inputModel)]="mobileNumber" formControlName="number">
+                  <app-custom-text [disabled]="disableGeneral" formControlName="number">
                   </app-custom-text>
                 </td>
               </tr>
               <tr>
                 <td>Address:</td>
                 <td class="mymenu2">
-                  <app-custom-textarea [disabled]="disableGeneral" [(inputModel)]="address" formControlName="address">
+                  <app-custom-textarea [disabled]="disableGeneral" formControlName="address">
                   </app-custom-textarea>
                 </td>
               </tr>
@@ -112,9 +112,9 @@
             <tr *ngFor="let clincicians of clinicians">
               <td>{{clincicians.name}}:</td>
               <td class="mymenu2">
-                <app-custom-role-select [disabled]="disableClinicians" [myDropDown]="bottomDropDown"
+                <app-custom-select [disabled]="disableClinicians" [list]="roleList" [myDropDown]="bottomDropDown"
                   [(modelValue)]="clincicians.role">
-                </app-custom-role-select>
+                </app-custom-select>
               </td>
             </tr>
           </table>

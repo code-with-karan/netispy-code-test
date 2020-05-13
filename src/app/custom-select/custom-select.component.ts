@@ -22,7 +22,7 @@ export class CustomSelectComponent implements OnInit, ControlValueAccessor {
   @Input() modelValue: string;
   @Input() myDropDown: string = '';
   @Input() dropDown: string = '';
-
+  @Input() list: any;
   value: string;
   constructor() { }
   writeValue(value: any): void {

@@ -1,6 +1,4 @@
 <select (change)="onChange($event.target.value)" [ngClass]=[dropDown] [disabled]="disabled" [(ngModel)]="modelValue"
   [value]="value">
-  <option value="female">Female</option>
-  <option value="male">Male</option>
-  <option value="other">Other</option>
+  <option *ngFor="let data of list" value={{data.id}}>{{data.value}}</option>
 </select>

@@ -7,16 +7,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  userName: string;
-  consultant: string;
-  dob: string;
-  drug: string;
-  nhs: string;
-  birthDate: string;
   general: FormGroup;
-  gendar: string;
-  mobileNumber: string;
-  address: string;
   clinicians: any;
   buttonPrimary: string = 'primary'; //primary||secondary||info||warning||danger||link
   buttonDanger: string = 'danger'; //circle||oval-medium||oval-small
@@ -25,14 +16,18 @@ export class UserProfileComponent implements OnInit {
   buttonOvalSmall: string = 'oval-small';
   disableGeneral: boolean = true;
   disableClinicians: boolean = true;
-  primaryHigh: string;
-  primaryLow: string;
+  primaryHigh: string = '';
+  primaryLow: string = '';
   priority: string;
   bottomDropDown: string = 'bottom'; // bottom||round
   lastContactedDate: any;
   lastContactedDr: any;
+  data: any;
+  gendarList: any = [{ id: 'female', value: 'Female' }, { id: 'male', value: 'Male' }, { id: 'other', value: 'Other' }]
+  roleList: any = [{ id: 'Admin', value: 'Admin' }, { id: 'Read Only', value: 'Read Only' }, { id: 'Write Only', value: 'Write Only' }]
+  constructor(private UserMonitoringService: UserMonitoringService) {
 
-  constructor(private UserMonitoringService: UserMonitoringService) { }
+  }
 
   ngOnInit() {
     this.userMonitoredData();
@@ -40,25 +35,20 @@ export class UserProfileComponent implements OnInit {
   }
 
   userMonitoredData() {
-    this.UserMonitoringService.getCampBySlug().subscribe(response => {
-      this.userName = response['data'][0].name;
-      this.priority = response['data'][0].priority;
-      this.consultant = response['data'][0].consultant;
-      this.dob = response['data'][0].dob;
-      this.drug = response['data'][0].drug;
-      this.nhs = response['data'][0].nhs;
-      this.birthDate = response['data'][0].birthdate;
-      this.gendar = response['data'][0].gender;
-      this.mobileNumber = response['data'][0].mobilenumber;
-      this.address = response['data'][0].address;
-      this.lastContactedDate = response['data'][0].lastcontact
-      this.lastContactedDr = response['data'][0].lastdr;
+    this.UserMonitoringService.getCampBySlug().subscribe(async response => {
+      this.data = response['data'][0];
+      if (this.data.priority == "high") {
+        this.primaryHigh = 'primary'
+      } else {
+        this.primaryLow = 'primary'
+      }
       this.clinicians = response['assignedClinicians'];
-      this.setPriority();
+      this.setFormValue();
     }, err => {
       console.log('error', err);
     })
   }
+
   setPriority() {
     if (this.priority == 'high') {
       this.primaryHigh = 'primary'
@@ -74,7 +64,15 @@ export class UserProfileComponent implements OnInit {
       address: new FormControl("", [Validators.required])
     });
   }
-
+  setFormValue() {
+    this.general.setValue({
+      gendar: this.data.gender,
+      dateOfBirth: this.data.birthdate,
+      number: this.data.mobilenumber,
+      address: this.data.address
+    });
+    return
+  }
   editGeneral() {
     this.disableGeneral = false;
   }
