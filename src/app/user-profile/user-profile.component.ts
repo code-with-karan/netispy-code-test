@@ -23,6 +23,7 @@ export class UserProfileComponent implements OnInit {
   lastContactedDate: any;
   lastContactedDr: any;
   data: any;
+  monitor: any;
   gendarList: any = [{ id: 'female', value: 'Female' }, { id: 'male', value: 'Male' }, { id: 'other', value: 'Other' }]
   roleList: any = [{ id: 'Admin', value: 'Admin' }, { id: 'Read Only', value: 'Read Only' }, { id: 'Write Only', value: 'Write Only' }]
   constructor(private UserMonitoringService: UserMonitoringService) {
